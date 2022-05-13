@@ -30,3 +30,16 @@ double hit_sphere(const point3& center, double radius, const ray& r) {
     }
 }
 ```
+
+Credit [Solving the Right Problems for Engine Programmers - Mike Acton‌ (TGC 2017)](https://www.youtube.com/watch?v=4B00hV3wmMY&t=87s)
+#### Reasonable defaults.
+- Linear search through array.
+- FIFO managed by integer.
+- Store objects by types explicitly.
+- Batch processing as a desgin goal since it's the most common case.
+- Excplicit latency and throughput constraints. when can I issue the next instruction.
+- Version data formats.
+- Allocators block ,stack ,scratch.
+- Model target manually first visualize the target result somehow.
+- Index look aside table.
+
