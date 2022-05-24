@@ -1,3 +1,30 @@
+
+Credit: [Barycentric Coordinates](https://www.cut-the-knot.org/triangle/barycenter.shtml).
+
+Given any three points in R3 {A,B,C} a point p on the plane enclosed by ABC can be defined by three weights w0 , w1 ,w2 
+such that
+
+w0 + w1 + w2 = 1 
+
+p = A * w0 + B * w1 + C * w2 -> p is no the surface of the triangle 
+
+![image](https://user-images.githubusercontent.com/7438866/170110522-b46b5606-1071-4a86-ae53-2293fa0b42bf.png)
+```
+
+def point_in_triangle(v0,v1,v2 ,N , P):
+    edge0 = v1 - v0 
+    edge1 = v2 - v1 
+    edge2 = v0 - v2
+    C0 = P - v0 
+    C1 = P - v1 
+    C2 = P - v2
+    if dotProduct(N, crossProduct(edge0, C0)) > 0 and dotProduct(N, crossProduct(edge1, C1)) > 0 and dotProduct(N, crossProduct(edge2, C2)) > 0 :    
+        return True
+    return False
+    
+```
+
+
 Credit: [Computational Geometry](https://www.toptal.com/python/computational-geometry-in-python-from-theory-to-implementation).
 ```
 # python line segment intersection test
