@@ -100,13 +100,19 @@ inoremap jk <Esc>
 "=====================================================
 "" Tabs / Buffers settings
 "=====================================================
+ 
+
 tab sball
 set switchbuf=useopen
 set laststatus=2
-nmap <F9> :bprev<CR>
-nmap <F10> :bnext<CR>
-nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
-nmap <leader><space> :noh<CR>
+nmap ,k :bprev<CR>                                                                                                                                                                                                                                                                                                                                                              
+nmap ,j :bnext<CR>                                                                                                                                                                                                                                                                                                                                                              
+nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>                                                                                                                                                                                                                                                                                                               
+nmap <leader><space> :noh<CR><ESC>                                                                                                                                                                                                                                                                                                                                              
+nmap <leader>k :tabp<CR>                                                                                                                                                                                                                                                                                                                                                        
+nmap <leader>j :tabn<CR>                                                                                                                                                                                                                                                                                                                                                        
+tmap <leader>k <C-W>N:tabp<CR>                                                                                                                                                                                                                                                                                                                                                  
+tmap <leader>j <C-W>N:tabn<CR>                                                                                                                                                                                                                                                                                                                                                  
 
 "" Search settings
 "=====================================================
