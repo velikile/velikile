@@ -1,3 +1,12 @@
+Credit [Bezier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+```
+def point_on_curve(p0,p1,p2,p3,t)
+    return t(t(p0) + (1-t)(p1)) + (1-t)(t(p2) + (1-t)(p3))
+
+```
+![Bézier_3_big](https://user-images.githubusercontent.com/7438866/171404406-e1621cf1-89f8-4d27-9f8f-f9c6b91d132f.gif)
+![Bézier_4_big](https://user-images.githubusercontent.com/7438866/171403914-468bfc7c-ac86-46bc-b5f5-47b3b9dd9b87.gif)
+
 
 Credit: [Barycentric Coordinates](https://www.cut-the-knot.org/triangle/barycenter.shtml).
 
@@ -17,7 +26,8 @@ def point_in_triangle(v0,v1,v2 ,N , P):
     edge2 = v0 - v2
     C0 = P - v0 
     C1 = P - v1 
-    C2 = P - v2
+    C2 = P - v2![Bézier_3_big](https://user-images.githubusercontent.com/7438866/171404270-dfcc24a3-27c9-4f15-be2e-81f4e31e292f.gif)
+
     if dotProduct(N, crossProduct(edge0, C0)) > 0 and dotProduct(N, crossProduct(edge1, C1)) > 0 and dotProduct(N, crossProduct(edge2, C2)) > 0 :    
         return True
     return False
