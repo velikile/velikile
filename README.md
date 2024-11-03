@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @velikile
 - 👀 I’m interested in science and technology 
-- 🌱 I’m currently working as a ML with python and pytorch
+- 🌱 I’m currently working on video analysis tools 
 - 📫 How to reach me levbo87@gmail.com
 
 <!---
