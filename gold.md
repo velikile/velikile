@@ -80,3 +80,13 @@ Credit [Solving the Right Problems for Engine Programmers - Mike Acton‌ (TGC 2
 - Model target manually first visualize the target result somehow.
 - Index look aside table.
 
+Credit : [Andrew Kelley Practical Data Oriented Design] (DoD)(https://www.youtube.com/watch?v=IroPQ150F6c)
+
+#### Main points 
+- Reduce size of the structs by using indices instead of pointers
+- For booleans use Arrays for entities (dead\ alive) in seperate arrays "store them out of band"
+- Make sure the order of elements doesn't conflict with the allignment requirements
+- Use SOA instead of AOS to reduce padding zig has multiarrayilst converts structs into SOA lists automagically
+- Use observations about the behaviour of the code , if you see waste you can store it out of band in a "sparse array(hash map)"
+- Reduce size of structs by using the Encoding technique group the common data and store the uncommon data in an out of band manner
+
