@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @velikile
-- 👀 I’m interested in science and technology 
+- 👀 I’m interested in science and tech , working on video processing , computer graphics simuation , AI , NN and computer vision.
 - 🌱 I’m currently working on video analysis tools 
 - 📫 How to reach me levbo87@gmail.com
 
