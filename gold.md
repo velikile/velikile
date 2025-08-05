@@ -90,3 +90,14 @@ Credit : [Andrew Kelley Practical Data Oriented Design] (DoD)(https://www.youtub
 - Use observations about the behaviour of the code , if you see waste you can store it out of band in a "sparse array(hash map)"
 - Reduce size of structs by using the Encoding technique group the common data and store the uncommon data in an out of band manner
 
+
+Credit [Dennis Gustafsson – Parallelizing the physics solver – BSC 2025](https://www.youtube.com/watch?v=Kvsvd67XUKw&ab_channel=BetterSoftwareConference)
+#### Main ideas 
+- Projected gauss seidel Sequential impulse (sequentially satisfy constrained and repeat until solved)
+- [Graph Coloring (Box 2d Erin Cotto)] (https://box2d.org/posts/2024/08/simd-matters/)
+-     Detailed rigid body simulation (Nvidia R&D) https://youtu.be/zzy6u1z_l9A
+- Use Parallel_for for simplicity sake
+- condition variables are slow for quick wake up (busy wait loops are faster for quick wakeup)
+- Use profiler or include a way to visualize the timings information in the program
+
+- 
