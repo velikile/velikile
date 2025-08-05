@@ -94,7 +94,7 @@ Credit : [Andrew Kelley Practical Data Oriented Design] (DoD)(https://www.youtub
 Credit [Dennis Gustafsson – Parallelizing the physics solver – BSC 2025](https://www.youtube.com/watch?v=Kvsvd67XUKw&ab_channel=BetterSoftwareConference)
 #### Main ideas 
 - Projected gauss seidel Sequential impulse (sequentially satisfy constrained and repeat until solved)
-- [Graph Coloring (Box 2d Erin Cotto)] (https://box2d.org/posts/2024/08/simd-matters/)
+- [Graph Coloring (Box 2d Erin Cotto)](https://box2d.org/posts/2024/08/simd-matters/)
 -     Detailed rigid body simulation (Nvidia R&D) https://youtu.be/zzy6u1z_l9A
 - Use Parallel_for for simplicity sake
 - condition variables are slow for quick wake up (busy wait loops are faster for quick wakeup)
