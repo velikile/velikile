@@ -26,7 +26,7 @@ def point_in_triangle(v0,v1,v2 ,N , P):
     edge2 = v0 - v2
     C0 = P - v0 
     C1 = P - v1 
-    C2 = P - v2![Bézier_3_big](https://user-images.githubusercontent.com/7438866/171404270-dfcc24a3-27c9-4f15-be2e-81f4e31e292f.gif)
+    C2 = P - v2
 
     if dotProduct(N, crossProduct(edge0, C0)) > 0 and dotProduct(N, crossProduct(edge1, C1)) > 0 and dotProduct(N, crossProduct(edge2, C2)) > 0 :    
         return True
@@ -64,7 +64,7 @@ double hit_sphere(const point3& center, double radius, const ray& r) {
         return -1.0;
     } else {
         return (-half_b - sqrt(discriminant) ) / a;
-    }
+cds                    }
 }
 ```
 
@@ -100,4 +100,54 @@ Credit [Dennis Gustafsson – Parallelizing the physics solver – BSC 2025](htt
 - condition variables are slow for quick wake up (busy wait loops are faster for quick wakeup)
 - Use profiler or include a way to visualize the timings information in the program
 
-- 
+Credit [Sean Barrett stbcc ](https://stb.handmade.network/blog/p/1136-connected_components_algorithm)
+#### Main pooints
+for the connected component part use the [disjoint set forests](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
+```
+struct point
+{
+    uint16_t x;
+    uint16_t y;
+};
+point leader[1024][1024];
+
+point dsf_find(int x, int y)
+{
+   point p,q;
+   p = leader[y][x];
+   if (p.x == x && p.y == y)
+      return p;
+   q = dsf_find(p.x, p.y);
+   leader[y][x] = q; // path compression
+   return q;
+}
+
+void dsf_union(int x1, int y1, int x2, int y2)
+{
+   point p = dsf_find(x1,y1);
+   point q = dsf_find(x2,y2);
+
+   if (p.x == q.x && p.y == q.y)
+      return;
+
+   leader[p.y][p.x] = q;
+}
+
+```
+#### Deletion problem
+The connected components data structure contains a label for each node , that label is the same one for the nodes that has a connection to any of the other nodes in that tree . When trying to delete a connection a problem arises the compnents is now split , the worst case is on the delete you would have to update half of the nodes . An option to tackle that problem is to store the label into a different location and only store a pointer to that location inside the nodes that lie within that components , so that after the update you only update the label. But when you disconnect a large component into components we might make that disconnection in many places , there's no way to predict the layout of the pointed to labels such that it matches our disconnection in a way where we only need to update k labels. Most pepole just rebuild the entire connected components data structre (recompute the flood fill every nth frame). The idea of stbcc is to compromise introduce a moderate amount of intermediate indirected labels so that we can rewrite as few labels as possible and minimize the number of nodes which we need to point to different labels entirely , we do this by utilizing the assumption that we have a grid and the geometry of it can guide us.
+
+
+#### Two level hierarchies 
+There is a way to make a n^2 algorithm into a n^1.5 algorithm 
+by splitting the data points into a grid of size sqrt(n) * sqrt(n) run the algorithm on the new pieces , each of these peices will take O(sqrt(n)) so the entire set will take O(sqrt(n) * n) which is O(n^1.5)
+
+Two levels heirarchies are almost always better than quadtrees or other fully recursive algorithms in terms of speeding things up. 
+
+#### On every update
+1. rebuild the locally connected components for the subgrid
+2. rebuild the adjacency from that subgrid to its neighbors and vice versa
+3. compute from scratch the globally connected components forom the locally connected pieces
+
+
+
