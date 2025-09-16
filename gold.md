@@ -149,5 +149,15 @@ Two levels heirarchies are almost always better than quadtrees or other fully re
 2. rebuild the adjacency from that subgrid to its neighbors and vice versa
 3. compute from scratch the globally connected components forom the locally connected pieces
 
-
-
+Credit [PCG, a family of better random generators](https://www.pcg-random.org/#)
+1. linear congruential generator (LCG) sequential psaudo random generator
+   $X_{n+1} = (aX_n + c) mod  {m}$
+   That produces a repeating pattern which is not random enough to be used for say a ray tracing
+2. Use the lcg output as the input to a bit mixer 
+ ```
+    state = state * m + i ;
+    output1 = state >> (29 - (state >> 61))
+    output2 = rotate32((state ^ state>>18) >> 27 , state >> 59)
+    //just an example with made up numbers
+    output3 = state ^ (state >> 11 ^ state <<7 ^ state >> 3) 
+```
